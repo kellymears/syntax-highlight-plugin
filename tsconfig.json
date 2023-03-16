@@ -1,0 +1,12 @@
+{
+  "extends": "@roots/bud/config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "types": ["@roots/bud", "@roots/bud-swc", "@types/webpack-env"],
+    "paths": {
+      "@src/*": ["./src/*"]
+    }
+  },
+  "files": ["types/custom.d.ts"],
+  "include": ["src"]
+}

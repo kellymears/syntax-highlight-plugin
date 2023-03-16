@@ -1,0 +1,22 @@
+{
+  "editor": {
+    "js": [
+      "js/editor.js"
+    ],
+    "dependencies": [
+      "wp-data",
+      "wp-hooks",
+      "wp-compose",
+      "react",
+      "wp-block-editor",
+      "wp-components",
+      "wp-i18n"
+    ]
+  },
+  "client": {
+    "js": [
+      "js/client.js"
+    ],
+    "dependencies": []
+  }
+}

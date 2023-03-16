@@ -1,0 +1,21 @@
+{
+  "name": "syntax-highlight",
+  "type": "module",
+  "devDependencies": {
+    "@roots/bud": "6.11.0",
+    "@roots/bud-preset-wordpress": "^6.11.0",
+    "@roots/bud-swc": "^6.11.0",
+    "@types/webpack-env": "^1.18.0",
+    "@wordpress/block-editor": "^11.6.0",
+    "@wordpress/components": "^23.6.0",
+    "@wordpress/compose": "^6.6.0",
+    "@wordpress/editor": "^13.6.0",
+    "@wordpress/hooks": "^3.29.0",
+    "@wordpress/i18n": "^4.29.0"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "highlight.js": "11.7.0",
+    "highlightjs-blade": "^0.1.0"
+  }
+}

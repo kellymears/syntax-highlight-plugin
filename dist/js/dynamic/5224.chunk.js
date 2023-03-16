@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_roots_bud=self.webpackChunk_roots_bud||[]).push([[5224],{"../node_modules/highlight.js/es/languages/vbscript-html.js":(s,e,n)=>{function u(s){return{name:"VBScript in HTML",subLanguage:"xml",contains:[{begin:"<%",end:"%>",subLanguage:"vbscript"}]}}n.r(e),n.d(e,{default:()=>u})}}]);
