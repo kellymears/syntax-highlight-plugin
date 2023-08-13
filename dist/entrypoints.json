@@ -4,10 +4,10 @@
       "js/editor.js"
     ],
     "dependencies": [
+      "react",
+      "wp-compose",
       "wp-data",
       "wp-hooks",
-      "wp-compose",
-      "react",
       "wp-block-editor",
       "wp-components",
       "wp-i18n"

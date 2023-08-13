@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_roots_bud=self.webpackChunk_roots_bud||[]).push([[3641],{"../node_modules/highlight.js/es/languages/erb.js":(e,u,n)=>{function s(e){return{name:"ERB",subLanguage:"xml",contains:[e.COMMENT("<%#","%>"),{begin:"<%[%=-]?",end:"[%-]?%>",subLanguage:"ruby",excludeBegin:!0,excludeEnd:!0}]}}n.r(u),n.d(u,{default:()=>s})}}]);

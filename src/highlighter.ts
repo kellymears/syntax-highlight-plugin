@@ -1,5 +1,5 @@
 import type {Language} from 'highlight.js'
-import hljs from 'highlight.js/es/core'
+import hljs from 'highlight.js/core'
 
 import 'highlight.js/styles/github-dark.css'
 
@@ -38,7 +38,7 @@ export class Highlighter {
     return language === `blade`
       ? await import(`highlightjs-blade`).then(({default: blade}) => blade)
       : await import(
-          `highlight.js/es/languages/${this.transformName(language)}`
+          `highlight.js/languages/${this.transformName(language)}`
         ).then(({default: language}) => language)
   }
 

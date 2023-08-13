@@ -1,64 +1,46 @@
 <?php
 
 /**
- * Plugin Name:        Syntax highlight
- * Plugin URI:         https://roots.io/
- * Description:        Custom element for syntax-highlighting
+ * Plugin Name:        Syntax highlight light
+ * Plugin URI:         https://kellymears.me
+ * Description:        Custom element for syntax highlighting
  * Version:            0.0.1
- * Author:             Roots
- * Author URI:         https://roots.io/
+ * Author:             Kelly Mears
+ * Author URI:         https://kellymears.me
  */
 
-namespace Roots\SyntaxHighlight;
+ namespace SyntaxHighlightLight;
 
-add_action('after_setup_theme', function () {
-    add_action('wp_enqueue_scripts', function () {
-        wp_enqueue_script(
-            "syntax-highlight/client",
-            plugin_dir_url(dirname(__FILE__)) . 'syntax-highlight/dist/js/client.js',
-            [],
-            null,
-            true,
-        );
+$url = fn ($endpoint) => join("/", [plugin_dir_url(__DIR__), 'syntax-highlight', 'dist', $endpoint]);
+$path = fn ($endpoint) => join("/", [plugin_dir_path(__DIR__), 'syntax-highlight', 'dist', $endpoint]);
+$read = fn ($endpoint) => file_get_contents($path($endpoint));
 
-        wp_enqueue_style(
-            "syntax-highlight/client",
-            plugin_dir_url(dirname(__FILE__)) . 'syntax-highlight/dist/css/988.css',
-            [],
-            null,
-            true,
-        );
-    }, 100);
+$entrypoints = json_decode($read('entrypoints.json'));
 
-    add_action('wp_enqueue_editor', function () {
-        wp_enqueue_script(
-            "syntax-highlight/edit",
-            plugin_dir_url(dirname(__FILE__)) . 'syntax-highlight/dist/js/editor.js',
-            [      "wp-data",
-            "wp-hooks",
-            "wp-compose",
-            "react",
-            "wp-block-editor",
-            "wp-components",
-            "wp-i18n"],
-            null,
-            true,
-        );
+add_action('wp_enqueue_scripts', function () use ($entrypoints, $url) {
+    wp_enqueue_script(
+        "syntax-highlight/client/js",
+        $url($entrypoints->client->js[0]),
+        $entrypoints->client->dependencies,
+        null,
+        true,
+    );
+}, 100);
 
-        wp_enqueue_script(
-            "syntax-highlight/client",
-            plugin_dir_url(dirname(__FILE__)) . 'syntax-highlight/dist/js/client.js',
-            [],
-            null,
-            true,
-        );
+add_action('wp_enqueue_editor', function () use ($entrypoints, $read, $url) {
+    wp_enqueue_script(
+        "syntax-highlight/editor/js",
+        $url($entrypoints->editor->js[0]),
+        $entrypoints->editor->dependencies,
+        null,
+        true,
+    );
 
-        wp_enqueue_style(
-            "syntax-highlight/editor",
-            plugin_dir_url(dirname(__FILE__)) . 'syntax-highlight/dist/css/988.css',
-            [],
-            null,
-            true,
-        );
-    }, 100);
-});
+    wp_enqueue_script(
+        "syntax-highlight/client/js",
+        $url($entrypoints->client->js[0]),
+        $entrypoints->client->dependencies,
+        null,
+        true,
+    );
+}, 100);

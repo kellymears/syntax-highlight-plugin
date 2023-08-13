@@ -1,6 +1,13 @@
-export default async ({path, ...b}) =>
-  b
+export default async ({path, ...bud}) =>
+  bud
     .entry(`editor`)
     .entry(`client`)
-    .compilePaths([path(`@src`), path(`@modules/highlight.js`)])
-    .experiments({topLevelAwait: true})
+    .alias({
+      [`highlight.js/styles`]: path(`@modules/highlight.js/styles`),
+      [`highlight.js`]: path(`@modules/highlight.js/es`)
+    })
+    .compilePaths([
+      path(`@src`),
+      path(`@modules/highlight.js`)
+    ])
+    .runtime(false)

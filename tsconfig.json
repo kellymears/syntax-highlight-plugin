@@ -4,7 +4,8 @@
     "baseUrl": "./",
     "types": ["@roots/bud", "@roots/bud-swc", "@types/webpack-env"],
     "paths": {
-      "@src/*": ["./src/*"]
+      "@src/*": ["./src/*"],
+      "highlight.js/*": ["./node_modules/highlight.js/es/*"]
     }
   },
   "files": ["types/custom.d.ts"],
